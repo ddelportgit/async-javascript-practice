@@ -76,6 +76,7 @@ const userList = document.querySelector("#userList");
 async function getUsers() {
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
+
     if (!response.ok) {
       throw new Error("Failed to fetch users");
     }
@@ -85,7 +86,7 @@ async function getUsers() {
     users.forEach(function (user) {
       const li = document.createElement("li");
 
-      li.textContent = user.name;
+      li.textContent = `${user.name} - ${user.email} - ${user.address.city}`;
 
       userList.appendChild(li);
     });
