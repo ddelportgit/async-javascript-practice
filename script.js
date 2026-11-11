@@ -39,3 +39,19 @@ async function getUser() {
 getUser().then(function (result) {
   console.log(result);
 });
+
+// async await 2
+
+function getProduct() {
+  return new Promise(function (resolve) {
+    resolve("Product loaded successfully!");
+  });
+}
+
+async function displayProduct() {
+  const product = await getProduct();
+
+  console.log(product);
+}
+
+displayProduct();
