@@ -29,3 +29,13 @@ myPromise2
   .catch(function (error) {
     console.log(error);
   });
+
+// async await
+
+async function getUser() {
+  return "User loaded successfully!";
+}
+
+getUser().then(function (result) {
+  console.log(result);
+});
