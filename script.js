@@ -55,3 +55,15 @@ async function displayProduct() {
 }
 
 displayProduct();
+
+// Error handling
+
+async function loadData() {
+  try {
+    const result = await Promise.reject("Unable to load data");
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+loadData();
