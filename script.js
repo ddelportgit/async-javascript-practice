@@ -60,10 +60,31 @@ displayProduct();
 
 async function loadData() {
   try {
-    const result = await Promise.reject("Unable to load data");
+    const result = await Promise.reject("Unable to load data!");
+    console.log(result);
   } catch (error) {
     console.log("Error:", error);
   }
 }
 
 loadData();
+
+// Fetch API
+
+const userList = document.querySelector("#userList");
+
+async function getUsers() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+  const users = await response.json();
+
+  users.forEach(function (user) {
+    const li = document.createElement("li");
+
+    li.textContent = user.name;
+
+    userList.appendChild(li);
+  });
+}
+
+getUsers();
