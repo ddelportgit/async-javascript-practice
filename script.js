@@ -74,17 +74,25 @@ loadData();
 const userList = document.querySelector("#userList");
 
 async function getUsers() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    if (!response.ok) {
+      throw new Error("Failed to fetch users");
+    }
 
-  const users = await response.json();
+    const users = await response.json();
 
-  users.forEach(function (user) {
-    const li = document.createElement("li");
+    users.forEach(function (user) {
+      const li = document.createElement("li");
 
-    li.textContent = user.name;
+      li.textContent = user.name;
 
-    userList.appendChild(li);
-  });
+      userList.appendChild(li);
+    });
+  } catch (error) {
+    userList.textContent = "Unable to load users.";
+    console.log(error.message);
+  }
 }
 
 getUsers();
